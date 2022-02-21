@@ -6,7 +6,7 @@
 ![avatar](img/tqlctf_simple_php_1.png)
 ![avatar](img/tqlctf_simple_php_2.png)
 
-查看网页源码可以找到一个有意思的地方，看样子这个get\_pic.php似乎可以读取其他文件。
+根据请求结果，php的版本为5.5，且查看网页源码可以找到一个有意思的地方，看样子这个get\_pic.php似乎可以读取其他文件。
 
 ![avatar](img/tqlctf_simple_php_3.png)
 

